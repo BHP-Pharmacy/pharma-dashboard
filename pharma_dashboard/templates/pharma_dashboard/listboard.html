@@ -1,0 +1,53 @@
+{% extends "edc_dashboard/listboard.html" %}
+{% load admin_urls %}
+{% load edc_base_extras %}
+{% load pharma_dashboard_extras %}
+
+             
+{% block listboard_panel %}
+    <a id="patient_add" title="add patient" class="btn btn-sm btn-default" role="button" 
+        href="{{ patient_add_url }}?next={{ patient_listboard_url }}">
+            <i class="fa fa-plus fa-sm"></i> Add Patient
+    </a>
+    <a id="return_to_home" title="go back" class="btn btn-sm btn-default" role="button" 
+        href="/">
+            <i class="fa fa-arrow-left fa-sm"></i> Go Back
+    </a>
+{% endblock listboard_panel %}
+
+
+{% block listboard_table_header %}
+    <!-- begin results header -->
+    <th>#</th>
+    <th></th>
+    <th>Subject Identifier</th>
+    <th>Initials</th>
+    <th>Gender</th>
+    <th>Age</th>
+    <th>Consent date</th>
+    <th>User</th>
+    <th>Modified</th>
+    <!-- end results header -->
+{% endblock listboard_table_header %}
+
+
+{% block listboard_table_button_column %}
+    <td style="white-space: nowrap">
+    <div class="btn-group">
+ 		{% patient_button result %}
+    
+    </div>
+    </td>
+    
+{% endblock listboard_table_button_column %}
+
+
+{% block listboard_table_columns %}
+    <td>{{result.object.subject_identifier}}</td>
+    <td nowrap>{{result.initials}}</td>
+    <td nowrap>{{result.gender}}</td>
+    <td nowrap></td>
+    <td nowrap>{{ result.user_created }}</td>
+    <td nowrap>{{ result.object.modified|date:"SHORT_DATETIME_FORMAT" }}</td>
+
+{% endblock listboard_table_columns %}
