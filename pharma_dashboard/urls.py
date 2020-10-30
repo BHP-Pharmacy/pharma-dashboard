@@ -1,6 +1,5 @@
 from django.conf import settings
 from django.urls.conf import path, include
-from django.urls import path
 from edc_dashboard import UrlConfig
 
 from .views import ListboardView
