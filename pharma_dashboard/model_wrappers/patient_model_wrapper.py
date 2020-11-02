@@ -1,8 +1,9 @@
 from django.conf import settings
 from edc_model_wrapper import ModelWrapper
 
+from .dispense_model_wrapper_mixin import DispenseModelWrapperMixin
 
-class PatientModelWrapper(ModelWrapper):
+class PatientModelWrapper(DispenseModelWrapperMixin, ModelWrapper):
 
     model = 'pharma_subject.patient'
     next_url_name = settings.DASHBOARD_URL_NAMES.get(

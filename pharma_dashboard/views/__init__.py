@@ -1,1 +1,2 @@
 from .listboard_view import ListboardView
+from .dispensary import DispensaryListboardView

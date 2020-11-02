@@ -16,4 +16,14 @@ pharma_dashboard.append_item(
             'patient_listboard_url'],
         no_url_namespace=no_url_namespace))
 
+pharma_dashboard.append_item(
+    NavbarItem(
+        name='dispensary',
+        title='Dispensary',
+        label='dispensary',
+        fa_icon='fa-medkit',
+        url_name=settings.DASHBOARD_URL_NAMES[
+            'dispense_listboard_url'],
+        no_url_namespace=no_url_namespace))
+
 site_navbars.register(pharma_dashboard)

@@ -1,1 +1,2 @@
 from .patient_model_wrapper import PatientModelWrapper
+from .dispense_model_wrapper import DispenseModelWrapper
