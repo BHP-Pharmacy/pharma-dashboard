@@ -3,7 +3,7 @@ from django.urls.conf import path, include
 from edc_dashboard import UrlConfig
 
 from .views import ListboardView, DispensaryListboardView
-
+from .patterns import subject_identifier
 
 app_name = 'pharma_dashboard'
 
@@ -19,7 +19,7 @@ dispense_listboard_url_config = UrlConfig(
     view_class=DispensaryListboardView,
     label='dispense_listboard',
     identifier_label='subject_identifier',
-    identifier_pattern=None)
+    identifier_pattern=subject_identifier)
 
 
 urlpatterns = []

@@ -48,10 +48,11 @@
     <td nowrap>{{ result.patient.initials }}</td>
     <td nowrap>{{ result.patient.gender }}</td>
     <td nowrap>{{ result.patient.age }}</td>
-    <td>{{ result.object.prescription }}</td>
-	<td>{{ result.object.prepared_datetime|date:"Y-m-d H:i"}}</td>
-	<td>{{ result.object.refill_date|date:"D, d M Y" }}</td>
+    <td nowrap>{{ result.object.medication }}</td>
+	<td nowrap>{{ result.object.prepared_datetime|date:"Y-m-d H:i"}}</td>
+	<td nowrap>{{ result.object.refill_date|date:"D, d M Y" }}</td>
+    <td nowrap>{{ result.latest_refill }}</td>
     <td nowrap></td>
-    <td><a href="#" class="btn btn-sm btn-default">Print</a></td> 
+    <td nowrap><a href="#" class="btn btn-sm btn-default">Print</a></td> 
 
 {% endblock listboard_table_columns %}

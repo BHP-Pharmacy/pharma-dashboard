@@ -24,9 +24,9 @@
     <th>Initials</th>
     <th>Gender</th>
     <th>Age</th>
-    <th>Consent date</th>
     <th>User</th>
     <th>Modified</th>
+    <th></th>
     <!-- end results header -->
 {% endblock listboard_table_header %}
 
@@ -46,8 +46,11 @@
     <td>{{result.object.subject_identifier}}</td>
     <td nowrap>{{result.initials}}</td>
     <td nowrap>{{result.gender}}</td>
-    <td nowrap></td>
+    <td nowrap>{{result.object.age}}</td>
     <td nowrap>{{ result.user_created }}</td>
     <td nowrap>{{ result.object.modified|date:"SHORT_DATETIME_FORMAT" }}</td>
+    <td nowrap> <a id="btn-dispensary-listboard-{{result.subject_identifier}}" class="btn btn-info btn-sm" role="button"   
+        title="Dispensary Records" href="{% url dispense_listboard_url result.subject_identifier %}">
+        <i class="far fa-user-circle fa-sm"></i> Dispensary Records  <i class="fa fa-share"></i></a></td>
 
 {% endblock listboard_table_columns %}
