@@ -5,10 +5,10 @@
 
              
 {% block listboard_panel %}
-     <!-- <a id="return_to_home" title="go back" class="btn btn-sm btn-default" role="button" 
+     <a id="return_to_home" title="go back" class="btn btn-sm btn-default" role="button" 
         href="/">
             <i class="fa fa-arrow-left fa-sm"></i> Go Back
-    </a> -->
+    </a>
 {% endblock listboard_panel %}
 
 
@@ -53,6 +53,7 @@
 	<td nowrap>{{ result.object.refill_date|date:"D, d M Y" }}</td>
     <td nowrap>{{ result.latest_refill }}</td>
     <td nowrap></td>
-    <td nowrap><a href="#" class="btn btn-sm btn-default">Print</a></td> 
+    <td><a href="{% url 'pharma_dashboard:print_url' subject_identifier=result.object.subject_identifier dispense_pk=result.object.pk %}" class="btn btn-sm btn-default">Print</a></td>                    
+    </td>
 
 {% endblock listboard_table_columns %}
