@@ -31,10 +31,11 @@ class PrescriptionLabel(Label):
             label_context = {}
         else:
             label_context = {
-                'telephone_number': '',
+                'telephone_number': patient.patient_site.telephone_number,
                 'patient': patient.subject_identifier,
                 'initials': patient.initials,
-                'sid': patient.sid,
+                'site':patient.patient_site.site_code,
+                'concentration':self.dispense.concentration,
                 'times_per_day': self.dispense.times_per_day,
                 'drug_name': self.dispense.medication,
                 'prepared_datetime': self.dispense.prepared_datetime.strftime("%d-%m-%y %H:%M"),

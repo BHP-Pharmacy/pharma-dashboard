@@ -26,4 +26,14 @@ pharma_dashboard.append_item(
             'dispense_listboard_url'],
         no_url_namespace=no_url_namespace))
 
+pharma_dashboard.append_item(
+    NavbarItem(
+        name='stock_management',
+        title='Stock Management',
+        label='stock_management',
+        fa_icon='fa-area-chart',
+        url_name=settings.DASHBOARD_URL_NAMES[
+            'stock_management_listboard_url'],
+        no_url_namespace=no_url_namespace))
+
 site_navbars.register(pharma_dashboard)

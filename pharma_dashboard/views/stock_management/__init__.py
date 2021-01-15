@@ -1,0 +1,1 @@
+from .stock_listboard_view import StockListboardView
