@@ -18,7 +18,7 @@ class ReportListboardView(NavbarViewMixin, EdcBaseViewMixin,
     listboard_template = 'report_listboard_template'
     listboard_url = 'report_listboard_url'
     listboard_panel_style = 'success'
-    listboard_fa_icon = 'fa-area-chart'
+    listboard_fa_icon = 'fa-bar-chart'
 
     model = 'pharma_subject.stock'
     model_wrapper_cls = StockModelWrapper

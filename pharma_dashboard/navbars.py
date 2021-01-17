@@ -41,7 +41,7 @@ pharma_dashboard.append_item(
         name='report',
         title='Stock Report',
         label='report',
-        fa_icon='fa-area-chart',
+        fa_icon='fa-file-excel',
         url_name=settings.DASHBOARD_URL_NAMES[
             'report_listboard_url'],
         no_url_namespace=no_url_namespace))
