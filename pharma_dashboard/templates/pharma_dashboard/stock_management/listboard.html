@@ -18,9 +18,10 @@
 {% block listboard_table_header %}
     <!-- begin results header -->
     <th>#</th>
+    <th></th>
     <th>Stock ID</th>
     <th>Received By</th>
-    <th> Received Date</th>
+    <th>Received Date</th>
     <th>Supplier</th>
     <th>Supplier Contact</th>
     <th></th>
@@ -40,11 +41,11 @@
 
 {% block listboard_table_columns %}
 	<td></td>
-    <td nowrap></td>
-    <td nowrap></td>
-    <td nowrap></td>
-    <td nowrap></td>
-	<td nowrap></td>
+    <td nowrap>{{result.stock_id}}</td>
+    <td nowrap>{{result.user_created}}</td>
+    <td nowrap>{{result.created}}</td>
+    <td nowrap>{{result.object.supplier.name}}</td>
+	<td nowrap>{{result.object.supplier.phone}}</td>
 	<td nowrap></td>
     <td nowrap></td>
     <td nowrap></td>

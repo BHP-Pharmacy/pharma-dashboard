@@ -1,0 +1,99 @@
+{% extends listboard_base_template %}
+{% load admin_urls %}
+{% load edc_base_extras %}
+{% load pharma_dashboard_extras %}
+{% load edc_dashboard_extras %}
+
+{% block extra-css %}
+{{ block.super }}
+	
+{% endblock extra-css %}
+
+{% block extra-scripts %}
+{{ block.super }}
+	
+{% endblock %}
+	
+{% block main %}
+
+<!-- start listboard main block-->
+<div class="panel panel-default">
+	<div class="panel-body">
+		<span class="pull-right">
+		    
+		</span>
+		<form class="form-inline">
+	  		<div class="form-group">
+	    		<input type="text" class="form-control" id="exampleInputName2" placeholder="Supplier">
+	  		</div>
+	  		<div class="form-group">
+	    		<input type="text" class="form-control" id="exampleInputEmail2" placeholder="Medication Name">
+	  		</div>
+	  		<button type="submit" class="btn btn-default"><i class="fa fa-filter"></i> Filter </button>
+	  		<a> <i class="fa fa-times"></i> Clear </a>
+		</form>
+	</div>
+</div>
+
+
+<!-- begin table -->
+<div class="table table-responsive">
+<table id="sort" class="table table-bordered table-hover small">
+<thead>
+
+{% block listboard_table_header %}
+     <!-- begin results header -->
+    <th>#</th>
+    <th>Protocol</th>
+    <th>Medication Name</th>
+    <th>Code</th>
+    <th>Quntity</th>
+    <!-- end results header -->
+{% endblock listboard_table_header %}
+
+</thead><tbody>
+
+{% block listboard_table_body %}
+
+    {% for result in results %}
+    	{% for stock_item in result.object.stockitem_set.all %}
+	        <tr>
+	        
+	        <td>{{ forloop.counter }}</td>
+	
+	        {% block listboard_table_button_column %}
+	
+	        {% endblock listboard_table_button_column %}
+	
+	        {% block listboard_table_columns %}
+	            <td nowrap>{{stock_item}}</td>
+			    <td nowrap>{{stock_item.drug_name}}</td>
+			    <td nowrap>{{stock_item.code}}</td>
+			    <td nowrap>{{stock_item.quantity}}</td>
+	        {% endblock listboard_table_columns %}
+	        </tr>
+		{% endfor %}
+    {% endfor %}
+
+{% endblock listboard_table_body %}
+
+</tbody></table>
+
+<!-- begin spacer rows -->
+<table>
+<tr><td>&nbsp;</td></tr>
+<tr><td>&nbsp;</td></tr>
+<tr><td>&nbsp;</td></tr>
+<tr><td>&nbsp;</td></tr>
+<tr><td>&nbsp;</td></tr>
+</table>
+<!-- end spacer rows -->
+
+</div><!-- end table -->
+
+{% paginator_row %}
+
+</div>  <!--end panel -->
+</div> <!--end panel-group -->
+<!-- end listboard main block -->
+{% endblock main %}

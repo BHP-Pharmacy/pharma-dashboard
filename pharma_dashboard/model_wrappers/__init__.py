@@ -1,3 +1,4 @@
 from .dispense_model_wrapper import DispenseModelWrapper
 from .patient_model_wrapper import PatientModelWrapper
 from .stock_model_wrapper import StockModelWrapper
+from .stock_item_model_wrapper import StockItemModelWrapper

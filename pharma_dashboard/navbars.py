@@ -36,4 +36,14 @@ pharma_dashboard.append_item(
             'stock_management_listboard_url'],
         no_url_namespace=no_url_namespace))
 
+pharma_dashboard.append_item(
+    NavbarItem(
+        name='report',
+        title='Stock Report',
+        label='report',
+        fa_icon='fa-area-chart',
+        url_name=settings.DASHBOARD_URL_NAMES[
+            'report_listboard_url'],
+        no_url_namespace=no_url_namespace))
+
 site_navbars.register(pharma_dashboard)
