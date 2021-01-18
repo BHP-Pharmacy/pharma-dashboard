@@ -35,16 +35,12 @@ class PrescriptionLabels:
     def label_name(self, name):
         if name == TABLET:
             return 'dispense_label_tablet'
-        elif name == SYRUP:
+        elif name in [SYRUP, SOLUTION]:
             return 'dispense_label_syrup'
-        elif name == IV:
-            return 'dispense_label_iv'
-        elif name == IM:
+        elif name in [IV, IM] :
             return 'dispense_label_iv'
         elif name == SUPPOSITORY:
             return 'dispense_label_suppository'
-        elif name == SOLUTION:
-            return 'dispense_label_syrup'
         elif name == CAPSULE:
             return 'dispense_label_capsule'
 

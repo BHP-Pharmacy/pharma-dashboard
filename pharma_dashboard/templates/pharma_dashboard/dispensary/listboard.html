@@ -6,8 +6,7 @@
              
 {% block listboard_panel %}
      <a id="return_to_home" title="go back" class="btn btn-sm btn-default" role="button" 
-        href="/">
-            <i class="fa fa-arrow-left fa-sm"></i> Go Back
+        href="{% url patient_listboard_url %}"> <i class="fa fa-arrow-left fa-sm"></i> Go Back
     </a>
 {% endblock listboard_panel %}
 
@@ -21,6 +20,7 @@
     <th>Gender</th>
     <th>Age</th>
     <th>Prescription</th>
+    <th>Type</th>
     <th>Prepared Date</th>
     <th>Refill On</th>
     
@@ -49,9 +49,9 @@
     <td nowrap>{{ result.patient.gender }}</td>
     <td nowrap>{{ result.patient.age }}</td>
     <td nowrap>{{ result.object.medication }}</td>
+    <td nowrap>{{ result.object.dispense_type }}</td>
 	<td nowrap>{{ result.object.prepared_datetime|date:"Y-m-d H:i"}}</td>
-	<td nowrap>{{ result.object.refill_date|date:"D, d M Y" }}</td>
-    <td nowrap>{{ result.latest_refill }}</td>
+	<td nowrap>{{ result.latest_refill|date:"Y-m-d H:i"}}</td>
     <td nowrap></td>
     <td><a href="{% url 'pharma_dashboard:print_url' subject_identifier=result.object.subject_identifier dispense_pk=result.object.pk %}" class="btn btn-sm btn-default">Print</a></td>                    
 

@@ -35,6 +35,7 @@ class PrescriptionLabel(Label):
                 'patient': patient.subject_identifier,
                 'initials': patient.initials,
                 'site':patient.patient_site.site_code,
+                'sid':patient.patient_site.site_code,
                 'concentration':self.dispense.concentration,
                 'times_per_day': self.dispense.times_per_day,
                 'drug_name': self.dispense.medication,
@@ -44,42 +45,21 @@ class PrescriptionLabel(Label):
                 'protocol': self.dispense.medication.protocol,
                 'weight': self.dispense.weight,
             }
-            if self.dispense.dispense_type == TABLET:
+            if self.dispense.dispense_type in [TABLET, CAPSULE, SUPPOSITORY]:
                 label_context.update({
                     'number_of_tablets': self.dispense.number_of_tablets,
                     'total_number_of_tablets': self.dispense.total_number_of_tablets,
                 })
-            elif self.dispense.dispense_type == SYRUP:
+            elif self.dispense.dispense_type in [SYRUP, SOLUTION]:
                 label_context.update({
                     'number_of_teaspoons': self.dispense.dose,
+                    'concentration': self.dispense.concentration,
                     'total_volume': self.dispense.total_volume,
                 })
-            elif self.dispense.dispense_type == IV:
+            elif self.dispense.dispense_type in [IV, IM]:
                 label_context.update({
                     'concentration': self.dispense.concentration,
                     'total_volume': self.dispense.total_volume,
                     'infusion': self.dispense.infusion_number,
-                })
-            elif self.dispense_type == IM:
-                label_context.update({
-                    'concentration': self.concentration,
-                    'total_volume': self.total_volume,
-                    'infusion': self.infusion_number,
-                })
-            elif self.dispense.dispense_type == SOLUTION:
-                label_context.update({
-                    'number_of_teaspoons': self.dispense.dose,
-                    'concentration': self.dispense.concentration,
-                    'total_volume': self.dispense.total_volume
-                })
-            elif self.dispense.dispense_type == CAPSULE:
-                label_context.update({
-                    'concentration': self.dispense.concentration,
-                    'total_volume': self.dispense.total_volume
-                })
-            elif self.dispense.dispense_type == SUPPOSITORY:
-                label_context.update({
-                    'concentration': self.dispense.concentration,
-                    'total_volume': self.dispense.total_volume
                 })
         return label_context

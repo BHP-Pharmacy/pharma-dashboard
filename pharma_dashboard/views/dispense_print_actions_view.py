@@ -32,13 +32,7 @@ class DispensePrintActionsView(EdcBaseViewMixin, PrintersMixin,
 
         if kwargs.get('dispense_pk'):
             self.print_labels_action(dispense_pk=kwargs.get('dispense_pk'))
-        try:
-            self.patient = patient_model_cls.objects.get(subject_identifier=kwargs['subject_identifier'])
-        except patient_model_cls.DoesNotExist:
-            pass
-        else:
-            self.print_labels_action()
-            response = HttpResponseRedirect(redirect_to=self.success_url)
+#             response = HttpResponseRedirect(redirect_to=self.success_url)
         return context
 
     def print_labels_action(self, dispense_pk=None):
