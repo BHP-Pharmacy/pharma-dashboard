@@ -37,9 +37,11 @@ report_listboard_url_config = UrlConfig(
     identifier_pattern='')
 
 
-urlpatterns = [path(r'dispense_print/(?P<subject_identifier>[-\w]+)/(?P<dispense_pk>[a-f0-9]{8}-?[a-f0-9]{4}-?4[a-f0-9]{3}-?[89ab][a-f0-9]{3}-?[a-f0-9]{12})/$',
-         DispensePrintActionsView.as_view(),
-         name='print_url'), ]
+urlpatterns = [re_path(r'^dispense_print/'
+                       '(?P<subject_identifier>[-\w]+)/'
+                       '(?P<dispense_pk>[a-f0-9]{8}-?[a-f0-9]{4}-?4[a-f0-9]{3}-?[89ab][a-f0-9]{3}-?[a-f0-9]{12})/$',
+                       DispensePrintActionsView.as_view(),
+                       name='print_url'), ]
 urlpatterns += patient_listboard_url_config.listboard_urls
 urlpatterns += dispense_listboard_url_config.listboard_urls
 urlpatterns += stock_listboard_url_config.listboard_urls
