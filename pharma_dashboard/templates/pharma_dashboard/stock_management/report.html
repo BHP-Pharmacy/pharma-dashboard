@@ -47,7 +47,6 @@
     <th>#</th>
     <th data-field='protocol' data-sortable='true' data-filter-control="select">Protocol</th>
     <th data-field='medication' data-sortable='true' data-filter-control="input">Medication Name</th>
-    <th data-field='code' data-sortable='true' data-filter-control="input">Code</th>
     <th>Remaining</th>
     <th>Consumption %</th>
     <!-- end results header -->
@@ -58,26 +57,23 @@
 {% block listboard_table_body %}
 
     {% for result in results %}
-    	{% for stock_item in result.object.stockitem_set.all %}
-	        <tr>
-	        
-	        <td>{{ forloop.counter }}</td>
-	
-	        {% block listboard_table_button_column %}
-	
-	        {% endblock listboard_table_button_column %}
-	
-	        {% block listboard_table_columns %}
-	            <td nowrap>{{stock_item.protocol.number}}, {{stock_item.protocol.name}}</td>
-			    <td nowrap>{{stock_item.drug_name}}</td>
-			    <td nowrap>{{stock_item.code}}</td>
-			    <td nowrap>
-			    	<span class="badge badge-pill badge-info">{{stock_item.quantity}}</span>
-			    </td>
-			    <td nowrap></td>
-	        {% endblock listboard_table_columns %}
-	        </tr>
-		{% endfor %}
+       <tr>
+       
+         <td>{{ forloop.counter }}</td>
+
+          {% block listboard_table_button_column %}
+
+          {% endblock listboard_table_button_column %}
+
+          {% block listboard_table_columns %}
+           <td nowrap>{{result.drug.protocol.number}}, {{result.drug.protocol.name}}</td>
+	       <td nowrap>{{result.drug.name}}</td>
+	       <td nowrap>
+	    	 <span class="badge badge-pill badge-info">{{result.quantity}}</span>
+	       </td>
+	       <td nowrap></td>
+          {% endblock listboard_table_columns %}
+       </tr>
     {% endfor %}
 
 {% endblock listboard_table_body %}

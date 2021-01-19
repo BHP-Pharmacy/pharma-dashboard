@@ -2,24 +2,8 @@
 {% load admin_urls %}
 {% load edc_base_extras %}
 {% load pharma_dashboard_extras %}
-{% load static %}
 
-<!-- begin extra-css -->
-{% block extra-css %}
-	{{block.super}}
-	<link rel="stylesheet" type="text/css" href="{% static 'pharma_dashboard/css/all.css' %}">
-{% endblock extra-css %}
-<!-- end extra-css -->
-
-<!-- begin extra-scripts by app ================================================== -->
-{% block extra-scripts %}
-{{block.super}}
-<script type="text/javascript" charset="utf8" src="{% static 'pharma_dashboard/js/all.js' %}"></script>
-{% endblock extra-scripts %}
-<!-- end extra-scripts by app ================================================== -->
-
-
-             
+      
 {% block listboard_panel %}
 	<a id="stock_add" title="add patient" class="btn btn-sm btn-default" role="button" 
         href="{{ stock_add_url }}?next={{ stock_management_listboard_url }}">
@@ -60,11 +44,11 @@
     
 {% endblock listboard_table_button_column %}
 
-
+{{results}}
 {% block listboard_table_columns %}
     <td nowrap>{{result.stock_id}}</td>
-    <td nowrap>{{result.user_created}}</td>
-    <td nowrap>{{result.object.created|date:"SHORT_DATETIME_FORMAT"}}</td>
+    <td nowrap>{{result.received_by}}</td>
+    <td nowrap>{{result.object.received_date|date:"SHORT_DATETIME_FORMAT"}}</td>
     <td nowrap>{{result.object.supplier.name}}</td>
 	<td nowrap>{{result.object.supplier.phone}}</td>
 	<td nowrap></td>

@@ -31,6 +31,7 @@ class DispensaryListboardView(NavbarViewMixin, EdcBaseViewMixin,
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+
         context.update(
             dispense_url=self.model_cls().get_absolute_url(),
             subject_identifier=self.kwargs.get('subject_identifier'))

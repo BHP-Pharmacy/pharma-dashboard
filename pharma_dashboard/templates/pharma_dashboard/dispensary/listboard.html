@@ -5,7 +5,13 @@
 
              
 {% block listboard_panel %}
-     <a id="return_to_home" title="go back" class="btn btn-sm btn-default" role="button" 
+   {% if subject_identifier %}
+      <a id="dispense_add_{{subject_identifier" title="dispense" class="btn btn-sm btn-default" role="button" 
+         href="{{ dispense_url }}?next=pharma_dashboard:dispense_listboard_url,subject_identifier&subject_identifier={{subject_identifier}} "> 
+         <i class="fa fa-plus fa-sm"></i> Dispense
+      </a>
+    {% endif %}
+    <a id="return_to_home" title="go back" class="btn btn-sm btn-default" role="button" 
         href="{% url patient_listboard_url %}"> <i class="fa fa-arrow-left fa-sm"></i> Go Back
     </a>
 {% endblock listboard_panel %}
@@ -18,7 +24,6 @@
     <th>Subject Identifier</th>
     <th>Initials</th>
     <th>Gender</th>
-    <th>Age</th>
     <th>Prescription</th>
     <th>Type</th>
     <th>Prepared Date</th>
@@ -30,16 +35,21 @@
 
 
 {% block listboard_table_button_column %}
-  <div class="btn-group">
-    <td style="white-space: nowrap">
-	    <a id="dispense_change_{{ subject_identifier }}" title="{{ title }}" role="button"
+
+ <td style="white-space: nowrap">
+    <div class="btn-group">
+       <a id="dispense_change_{{ subject_identifier }}" title="{{ title }}" role="button" 
+         class="btn btn-default btn-sm" href="{{ result.href }}"> <i class="fa fa-pencil-alt fa-sm"></i>
+	   </a>
+	
+	    <a id="dispense_refill_{{ subject_identifier }}" title="{{ title }}" role="button"
 		 href="{{ result.href }}"
 		 class="btn btn-success btn-sm" role="button">
 		 Refill
 		</a>
-    </td>
-  </div>
-    
+     </div>
+ </td>
+ 
 {% endblock listboard_table_button_column %}
 
 
@@ -47,7 +57,6 @@
 	<td>{{ result.object.subject_identifier }}</td>
     <td nowrap>{{ result.patient.initials }}</td>
     <td nowrap>{{ result.patient.gender }}</td>
-    <td nowrap>{{ result.patient.age }}</td>
     <td nowrap>{{ result.object.medication }}</td>
     <td nowrap>{{ result.object.dispense_type }}</td>
 	<td nowrap>{{ result.object.prepared_datetime|date:"Y-m-d H:i"}}</td>
