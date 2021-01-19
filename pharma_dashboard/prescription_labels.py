@@ -13,8 +13,9 @@ class PrescriptionLabels:
         zpl_datas = []
         dispense = self.get_dispensary(
             dispense_pk=dispense_pk)
+        protocol = dispense.medication.protocol.name
 
-        label_name = self.label_name(dispense.dispense_type)
+        label_name = self.label_name(dispense.dispense_type, protocol)
 
         label = self.label_cls(
             dispense=dispense, user=user,
@@ -32,12 +33,18 @@ class PrescriptionLabels:
         else:
             return dispense_obj
 
-    def label_name(self, name):
+    def label_name(self, name, protocol):
         if name == TABLET:
+            if protocol == 'A5332':
+                return 'dispense_label_tablet_A5332'
             return 'dispense_label_tablet'
         elif name in [SYRUP, SOLUTION]:
             return 'dispense_label_syrup'
         elif name in [IV, IM] :
+            if protocol == 'Tatelo':
+                return 'dispense_label_iv_tatelo'
+            elif protocol == 'HPTN 084':
+                return 'dispense_label_iv_084'
             return 'dispense_label_iv'
         elif name == SUPPOSITORY:
             return 'dispense_label_suppository'

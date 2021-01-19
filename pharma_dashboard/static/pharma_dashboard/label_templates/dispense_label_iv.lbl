@@ -17,6 +17,6 @@
 ^FO420,240^A0N,20,20^FDTime of Admin:____________^FS
 ^FO420,260^A0N,20,20^FDAdmin By(Initials):__________^FS
 ^FO100,300^A0N,20,20^FDStorage instructions: ${storage_instructions} ^FS
-^FO100,330^A0N,20,20^FDFOR INVESTIGATIONAL USE ONLY (PROTOCOL NUMBER ${protocol})^FS
+^FO100,330^A0N,20,20^FDFOR INVESTIGATIONAL USE ONLY (${protocol})^FS
 ^FO100,360^A0N,20,20^FDExpiry Date:________________ ^FS
 ^XZ

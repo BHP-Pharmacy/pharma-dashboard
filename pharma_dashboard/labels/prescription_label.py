@@ -39,6 +39,7 @@ class PrescriptionLabel(Label):
                 'concentration':self.dispense.concentration,
                 'times_per_day': self.dispense.times_per_day,
                 'drug_name': self.dispense.medication,
+                'type': self.dispense.dispense_type.lower() + 's',
                 'prepared_datetime': self.dispense.prepared_datetime.strftime("%d-%m-%y %H:%M"),
                 'prepared_by': profile_cls.objects.get(user__username=self.user.username).initials,
                 'storage_instructions': self.dispense.medication.storage_instructions,
@@ -56,6 +57,15 @@ class PrescriptionLabel(Label):
                     'concentration': self.dispense.concentration,
                     'total_volume': self.dispense.total_volume,
                 })
+                if self.dispense.medication.protocol.name == 'Tatelo':
+                    label_context.update({
+                        'step': self.dispense.step
+                    })
+                elif self.dispense.medication.protocol.name == 'HPTN 084':
+                    label_context.update({
+                        'BMI': self.dispense.bmi,
+                        'needle_size': self.dispense.bmi
+                    })
             elif self.dispense.dispense_type in [IV, IM]:
                 label_context.update({
                     'concentration': self.dispense.concentration,
