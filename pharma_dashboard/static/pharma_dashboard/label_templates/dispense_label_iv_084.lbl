@@ -4,7 +4,7 @@
 ^FO100,60^FS
 ^FO100,90^A0N,20,20^FDPID: ${patient}                   SID: ${sid}              INITIALS: ${initials}
 ^FO100,80^FS 
-^FO100,105^A0N,20,20^FDBMI: ${BMI}      				VISIT CODE: ${infusion}      NEEDLE SIZE: ${step}^FS
+^FO100,105^A0N,20,20^FDBMI: ${BMI}      				VISIT CODE: ${visit_code}      NEEDLE SIZE: ${step}^FS
 ^FO100,130^A0N,20,20^FDDrug Name/Strength: ${drug_name}, ${concentration}^FS
 ^FO100,155^A0N,20,20^FDDirection of use: ${usage}     ^FS
 ^FO100,190^A0N,20,20^FD   PHARMACY                                                          CLINIC ^FS

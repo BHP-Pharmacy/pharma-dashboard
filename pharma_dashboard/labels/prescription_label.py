@@ -72,4 +72,12 @@ class PrescriptionLabel(Label):
                     'total_volume': self.dispense.total_volume,
                     'infusion': self.dispense.infusion_number,
                 })
+                if self.dispense.dispense_type == IV:
+                    label_context.update({
+                        'usage': 'Infuse (IV)intravenously'
+                    })
+                else:
+                    label_context.update({
+                        'usage': 'Inject intramuscularly(IM)'
+                    })
         return label_context
