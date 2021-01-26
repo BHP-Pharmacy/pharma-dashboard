@@ -48,7 +48,7 @@
     <th data-field='protocol' data-sortable='true' data-filter-control="select">Protocol</th>
     <th data-field='medication' data-sortable='true' data-filter-control="input">Medication Name</th>
     <th>Remaining</th>
-    <th>Consumption %</th>
+    <th>Average monthly consumption %</th>
     <!-- end results header -->
 {% endblock listboard_table_header %}
 
@@ -66,8 +66,8 @@
           {% endblock listboard_table_button_column %}
 
           {% block listboard_table_columns %}
-           <td nowrap>{{result.drug.protocol.number}}, {{result.drug.protocol.name}}</td>
-	       <td nowrap>{{result.drug.name}}</td>
+           <td nowrap>{{result.object.drug.protocol.number}}, {{result.object.drug.protocol.name}}</td>
+	       <td nowrap>{{result.object.drug.name}}</td>
 	       <td nowrap>
 	    	 <span class="badge badge-pill badge-info">{{result.quantity}}</span>
 	       </td>
