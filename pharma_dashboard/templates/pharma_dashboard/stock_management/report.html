@@ -9,7 +9,6 @@
 {{ block.super }}
 	<link type="text/css" rel="stylesheet" href="{% static 'pharma_dashboard/css/report.css' %}">
 	<link href="{% static 'pharma_dashboard/css/bootstrap-table.min.css' %}"rel=stylesheet>
-
 {% endblock extra-css %}
 
 {% block extra-scripts %}
@@ -48,7 +47,7 @@
     <th data-field='protocol' data-sortable='true' data-filter-control="select">Protocol</th>
     <th data-field='medication' data-sortable='true' data-filter-control="input">Medication Name</th>
     <th>Remaining</th>
-    <th>Average monthly consumption %</th>
+    <th>Average monthly consumption</th>
     <!-- end results header -->
 {% endblock listboard_table_header %}
 
@@ -71,7 +70,7 @@
 	       <td nowrap>
 	    	 <span class="badge badge-pill badge-info">{{result.quantity}}</span>
 	       </td>
-	       <td nowrap></td>
+	       <td nowrap>{{result.average_mothly_consumption}} {{result.object.drug.dispense_set.all.0.dispense_type|title}}s</td>
           {% endblock listboard_table_columns %}
        </tr>
     {% endfor %}
