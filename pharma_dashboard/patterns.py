@@ -1,1 +1,1 @@
-subject_identifier = '[0-9\-]+'
+subject_identifier = '\w+'
