@@ -20,7 +20,6 @@ class PrescriptionLabel(Label):
         self.user = user
         self.label_name = self.dispense.subject_identifier
 
-
     @property
     def label_context(self):
         patient_cls = django_apps.get_model('pharma_subject.patient')
@@ -30,13 +29,14 @@ class PrescriptionLabel(Label):
         except patient_cls.DoesNotExist:
             label_context = {}
         else:
+
             label_context = {
                 'telephone_number': patient.patient_site.telephone_number,
                 'patient': patient.subject_identifier,
                 'initials': patient.initials,
-                'site':patient.patient_site.site_code,
-                'sid':patient.patient_site.site_code,
-                'concentration':self.dispense.concentration,
+                'site': patient.patient_site.site_code,
+                'sid': patient.subject_identifier,
+                'concentration': self.dispense.concentration,
                 'times_per_day': self.dispense.times_per_day,
                 'drug_name': self.dispense.medication,
                 'type': self.dispense.dispense_type.lower() + 's',

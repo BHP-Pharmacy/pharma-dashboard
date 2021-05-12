@@ -10,9 +10,10 @@ from edc_navbar import NavbarViewMixin
 
 from ...model_wrappers import DispenseModelWrapper
 
+
 class DispensaryListboardView(NavbarViewMixin, EdcBaseViewMixin,
-                    ListboardFilterViewMixin, SearchFormViewMixin,
-                    ListboardView):
+                              ListboardFilterViewMixin, SearchFormViewMixin,
+                              ListboardView):
 
     listboard_template = 'dispense_listboard_template'
     listboard_url = 'dispense_listboard_url'

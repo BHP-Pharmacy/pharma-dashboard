@@ -10,6 +10,7 @@ from edc_navbar import NavbarViewMixin
 
 from ..model_wrappers import PatientModelWrapper
 
+
 class ListboardView(NavbarViewMixin, EdcBaseViewMixin,
                     ListboardFilterViewMixin, SearchFormViewMixin,
                     ListboardView):
