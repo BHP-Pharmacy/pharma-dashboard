@@ -21,6 +21,7 @@
     <th>#</th>
     <th></th>
     <th>Subject Identifier</th>
+    <th>Protocol</th>
     <th>Initials</th>
     <th>Gender</th>
     <th>User</th>
@@ -42,7 +43,8 @@
 
 
 {% block listboard_table_columns %}
-    <td>{{result.object.subject_identifier}}</td>
+    <td nowrap>{{result.object.subject_identifier}}</td>
+    <td nowrap>{{result.object.patient_site.protocol.number}}</td>
     <td nowrap>{{result.initials}}</td>
     <td nowrap>{{result.gender}}</td>
     <td nowrap>{{ result.user_created }}</td>
