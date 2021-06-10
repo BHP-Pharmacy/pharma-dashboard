@@ -77,7 +77,7 @@ class PrescriptionLabel(Label):
                         'bmi': self.dispense.bmi,
                         'needle_size': self.dispense.needle_size
                     })
-                if self.dispense.dispense_type == IV:
+                if self.dispense.dispense_type.upper() == IV:
                     label_context.update({
                         'usage': 'Infuse (IV)intravenously'
                     })
