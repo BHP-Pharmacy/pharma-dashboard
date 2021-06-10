@@ -40,14 +40,13 @@ class PrescriptionLabels:
             return 'dispense_label_tablet'
         elif name in [SYRUP, SOLUTION]:
             return 'dispense_label_syrup'
-        elif name in [IV, IM] :
+        elif name in [IV, IM]:
             if protocol == 'Tatelo':
                 return 'dispense_label_iv_tatelo'
-            elif protocol == 'HPTN 084':
+            elif protocol.upper() == 'HPTN 084':
                 return 'dispense_label_iv_084'
             return 'dispense_label_iv'
         elif name == SUPPOSITORY:
             return 'dispense_label_suppository'
         elif name == CAPSULE:
             return 'dispense_label_capsule'
-
