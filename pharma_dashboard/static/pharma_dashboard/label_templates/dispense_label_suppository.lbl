@@ -1,6 +1,6 @@
 ^XA
 ^FO90,65^A0N,20,25^FDBOTSWANA HARVARD PARTNERSHIP  	SITE: ${site}^FS
-^FO90,90^A0N,20,25^FDPRIVATE BAG BO 320, GABORONE  	TELEPHONE: ${telephone_number}^FS
+^FO90,90^A0N,20,25^FDPRIVATE BAG BO 320, GABORONE  	     TELEPHONE: ${telephone_number}^FS
 ^FO90,95^FS
 ^FO90,135^A0N,20,25^FDPID: ${patient}  	        	   SID: ${sid}               INITIALS: ${initials}^FS
 ^FO90,155^A0N,20,25^FDDrug Name/Strength: ${drug_name}  ${concentration}^FS

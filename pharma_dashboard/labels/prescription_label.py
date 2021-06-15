@@ -36,7 +36,7 @@ class PrescriptionLabel(Label):
                 'telephone_number': patient.patient_site.telephone_number,
                 'patient': patient.subject_identifier,
                 'initials': patient.initials,
-                'site': patient.patient_site.protocol.name,
+                'site': patient.patient_site.name,
                 'sid': patient.sid,
                 'concentration': self.dispense.concentration,
                 'times_per_day': self.dispense.times_per_day,
