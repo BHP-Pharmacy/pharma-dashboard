@@ -51,9 +51,11 @@ class PrescriptionLabel(Label):
                 'weight': self.dispense.weight,
                 'visit_code': self.dispense.visit_code,
             }
+
             if self.dispense.dispense_type in [TABLET, CAPSULE, SUPPOSITORY]:
                 label_context.update({
-                    'number_of_tablets': self.dispense.number_of_tablets,
+                    'number_of_tablets': str(
+                        self.dispense.number_of_tablets).replace('.5', u"½"),
                     'total_number_of_tablets': self.dispense.total_number_of_tablets,
                 })
             elif self.dispense.dispense_type in [SYRUP, SOLUTION]:
