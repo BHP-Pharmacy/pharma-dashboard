@@ -1,3 +1,5 @@
+import math
+
 from django.apps import apps as django_apps
 from arrow.arrow import Arrow
 from django.apps import apps as django_apps
@@ -53,11 +55,21 @@ class PrescriptionLabel(Label):
             }
 
             if self.dispense.dispense_type in [TABLET, CAPSULE, SUPPOSITORY]:
-                label_context.update({
-                    'number_of_tablets': str(
-                        self.dispense.number_of_tablets).replace('.5', u"½"),
-                    'total_number_of_tablets': self.dispense.total_number_of_tablets,
-                })
+
+                fractional, whole = math.modf(self.dispense.number_of_tablets)
+                if fractional == 0.5:
+                    label_context.update({
+                        'number_of_tablets': str(
+                            self.dispense.number_of_tablets).replace('.5',
+                                                                     u"½"),
+                        'total_number_of_tablets': self.dispense.total_number_of_tablets,
+                    })
+                else:
+                    label_context.update({
+                        'number_of_tablets': int(
+                            self.dispense.number_of_tablets),
+                        'total_number_of_tablets': self.dispense.total_number_of_tablets,
+                    })
             elif self.dispense.dispense_type in [SYRUP, SOLUTION]:
                 label_context.update({
                     'number_of_teaspoons': self.dispense.dose,
