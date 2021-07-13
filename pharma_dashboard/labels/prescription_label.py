@@ -57,19 +57,16 @@ class PrescriptionLabel(Label):
             if self.dispense.dispense_type in [TABLET, CAPSULE, SUPPOSITORY]:
 
                 fractional, whole = math.modf(self.dispense.number_of_tablets)
+                number_of_tablets = self.dispense.number_of_tablets
                 if fractional == 0.5:
-                    label_context.update({
-                        'number_of_tablets': str(
-                            self.dispense.number_of_tablets).replace('.5',
-                                                                     u"½"),
-                        'total_number_of_tablets': self.dispense.total_number_of_tablets,
-                    })
+                    number_of_tablets = str(number_of_tablets).replace('.5',
+                                                                     u"½")
                 else:
-                    label_context.update({
-                        'number_of_tablets': int(
-                            self.dispense.number_of_tablets),
-                        'total_number_of_tablets': self.dispense.total_number_of_tablets,
-                    })
+                    number_of_tablets = int(number_of_tablets)
+                label_context.update({
+                    'number_of_tablets': number_of_tablets,
+                    'total_number_of_tablets': self.dispense.total_number_of_tablets,
+                })
             elif self.dispense.dispense_type in [SYRUP, SOLUTION]:
                 label_context.update({
                     'number_of_teaspoons': self.dispense.dose,
