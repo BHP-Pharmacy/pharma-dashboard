@@ -1,9 +1,5 @@
-from django.apps import apps as django_apps
 from django.conf import settings
 from django.contrib import messages
-from django.http.response import HttpResponseRedirect
-from django.shortcuts import render
-from django.urls.base import reverse
 from django.views.generic.edit import ProcessFormView
 from django.views.generic.base import TemplateView
 from edc_base.view_mixins import EdcBaseViewMixin
@@ -28,11 +24,8 @@ class DispensePrintActionsView(EdcBaseViewMixin, PrintersMixin,
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
-        patient_model_cls = django_apps.get_model('pharma_subject.patient')
-
         if kwargs.get('dispense_pk'):
             self.print_labels_action(dispense_pk=kwargs.get('dispense_pk'))
-#             response = HttpResponseRedirect(redirect_to=self.success_url)
         return context
 
     def print_labels_action(self, dispense_pk=None):

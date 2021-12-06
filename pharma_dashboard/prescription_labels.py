@@ -1,5 +1,4 @@
 from django.apps import apps as django_apps
-from django.core.exceptions import ObjectDoesNotExist
 from .labels import PrescriptionLabel
 from .constants import CAPSULE, SOLUTION, SUPPOSITORY, SYRUP, TABLET, IM, IV
 
