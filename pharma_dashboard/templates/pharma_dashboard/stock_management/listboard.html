@@ -1,0 +1,59 @@
+{% extends "edc_dashboard/listboard.html" %}
+{% load admin_urls %}
+{% load edc_base_extras %}
+{% load pharma_dashboard_extras %}
+
+      
+{% block listboard_panel %}
+	<a id="stock_add" title="add patient" class="btn btn-sm btn-default" role="button" 
+        href="{{ stock_add_url }}?next={{ stock_management_listboard_url }}">
+            <i class="fa fa-plus fa-sm"></i> Recieve Stock
+    </a>
+    <a id="return_to_home" title="go back" class="btn btn-sm btn-default" role="button" 
+        href="/"> <i class="fa fa-arrow-left fa-sm"></i> Go Back
+    </a>
+{% endblock listboard_panel %}
+
+
+{% block listboard_table_header %}
+    <!-- begin results header -->
+    <th>#</th>
+    <th></th>
+    <th>Stock ID</th>
+    <th>Received By</th>
+    <th>Received Date</th>
+    <th>Supplier</th>
+    <th>Supplier Contact</th>
+    <th></th>
+    <th></th>
+    <th></th>
+    
+    <th></th>
+    <!-- end results header -->
+{% endblock listboard_table_header %}
+
+
+{% block listboard_table_button_column %}
+ <td style="white-space: nowrap">
+    <div class="btn-group">
+  	  <a id="stock_change_{{ stock_id }}" title="{{ title }}" role="button" 
+         class="btn btn-default btn-sm" href="{{ result.href }}"> <i class="fa fa-pencil-alt fa-sm"></i>
+      </a>
+  </div>
+ </td>
+    
+{% endblock listboard_table_button_column %}
+
+{{results}}
+{% block listboard_table_columns %}
+    <td nowrap>{{result.stock_id}}</td>
+    <td nowrap>{{result.received_by}}</td>
+    <td nowrap>{{result.object.received_date|date:"SHORT_DATETIME_FORMAT"}}</td>
+    <td nowrap>{{result.object.supplier.name}}</td>
+	<td nowrap>{{result.object.supplier.phone}}</td>
+	<td nowrap></td>
+    <td nowrap></td>
+    <td nowrap></td>
+    <td></td>                    
+
+{% endblock listboard_table_columns %}

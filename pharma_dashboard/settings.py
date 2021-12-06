@@ -30,7 +30,7 @@ ETC_DIR = '/etc'
 ALLOWED_HOSTS = []
 
 
-AUTO_CREATE_KEYS=True
+AUTO_CREATE_KEYS = True
 
 # Application definition
 
@@ -133,11 +133,15 @@ STATIC_URL = '/static/'
 DASHBOARD_URL_NAMES = {
     'patient_listboard_url': 'pharma_dashboard:patient_listboard_url',
     'dispense_listboard_url': 'pharma_dashboard:dispense_listboard_url',
+    'stock_management_listboard_url': 'pharma_dashboard:stock_management_listboard_url',
+    'report_listboard_url': 'pharma_dashboard:report_listboard_url',
     'data_manager_listboard_url': 'edc_data_manager:data_manager_listboard_url',
 }
 
 DASHBOARD_BASE_TEMPLATES = {
     'patient_listboard_template': 'pharma_dashboard/listboard.html',
     'dispense_listboard_template': 'pharma_dashboard/dispensary/listboard.html',
+    'stock_management_listboard_template': 'pharma_dashboard/stock_management/listboard.html',
+    'report_listboard_template': 'pharma_dashboard/stock_management/report.html',
     'data_manager_listboard_template': 'edc_data_manager/listboard.html',
 }

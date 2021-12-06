@@ -1,0 +1,23 @@
+^XA
+^FO100,15^A0N,20,20^FDBOTSWANA HARVARD PARTNERSHIP		SITE: ${site}^FS
+^FO100,35^A0N,20,20^FDPRIVATE BAG BO 320, GABORONE  		TELEPHONE: ${telephone_number}^FS
+^FO100,60^FS
+^FO100,90^A0N,20,20^FDPID: ${patient}                             INITIALS: ${initials}
+^FO100,80^FS 
+^FO100,105^A0N,20,20^FDWEIGHT(kg): ${weight}      INFUSION No: ${infusion}      STEP: ${step}^FS
+^FO100,130^A0N,20,20^FDDrug Name/Strength: ${drug_name}   ${concentration}^FS
+^FO100,155^A0N,20,20^FDDosage: ${usage}      Total: ${total_volume} ML^FS
+^FO100,190^A0N,20,20^FD   PHARMACY                                                          CLINIC ^FS
+^FO90,185^A0N^GB320,110,1,B^FS        
+^FO410,185^A0N^GB320,110,1,B^FS
+^FO100,220^A0N,20,20^FDD & T Prep: ${prepared_datetime}^FS
+^FO100,240^A0N,20,20^FDD & T Delivered at Clinic .....................^FS
+^FO100,260^A0N,20,20^FDDisp By : ${prepared_by} ^FS
+^FO420,220^A0N,20,20^FDDate of Admin:......................^FS
+^FO420,240^A0N,20,20^FDTime of Admin:.....................^FS
+^FO420,260^A0N,20,20^FDAdmin By(Initials):.................^FS
+^FO100,300^A0N,20,20^FPH\^FH^FDStore at 2-8 _A7 C for 24hours, EXPIRY @2-8  _A7 C: ${expiry_date}^FS
+^FO100,330^A0N,20,20^FDProtect from light: FOR INVESTIGATIONAL USE ONLY (${protocol})^FS
+^FO100,360^A0N,20,20^FPH\^FH^FDStable for 4 hours below 27 _A7 C. EXPIRY @15-27 _A7 C:.........................^FS
+
+^XZ

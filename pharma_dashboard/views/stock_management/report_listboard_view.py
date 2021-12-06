@@ -8,23 +8,23 @@ from edc_dashboard.view_mixins import ListboardFilterViewMixin, SearchFormViewMi
 from edc_dashboard.views import ListboardView
 from edc_navbar import NavbarViewMixin
 
-from ..model_wrappers import PatientModelWrapper
+from ...model_wrappers import StockModelWrapper
 
 
-class ListboardView(NavbarViewMixin, EdcBaseViewMixin,
-                    ListboardFilterViewMixin, SearchFormViewMixin,
-                    ListboardView):
+class ReportListboardView(NavbarViewMixin, EdcBaseViewMixin,
+                          ListboardFilterViewMixin, SearchFormViewMixin,
+                          ListboardView):
 
-    listboard_template = 'patient_listboard_template'
-    listboard_url = 'patient_listboard_url'
+    listboard_template = 'report_listboard_template'
+    listboard_url = 'report_listboard_url'
     listboard_panel_style = 'success'
-    listboard_fa_icon = 'fa-user-plus'
+    listboard_fa_icon = 'fa-bar-chart'
 
-    model = 'pharma_subject.patient'
-    model_wrapper_cls = PatientModelWrapper
+    model = 'pharma_subject.stock'
+    model_wrapper_cls = StockModelWrapper
     navbar_name = 'pharma_dashboard'
-    navbar_selected_item = 'patients'
-    search_form_url = 'patient_listboard_url'
+    navbar_selected_item = 'report'
+    search_form_url = 'report_listboard_url'
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
@@ -33,14 +33,14 @@ class ListboardView(NavbarViewMixin, EdcBaseViewMixin,
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context.update(
-            patient_add_url=self.model_cls().get_absolute_url())
+            stock_add_url=self.model_cls().get_absolute_url())
         return context
 
     def get_queryset_filter_options(self, request, *args, **kwargs):
         options = super().get_queryset_filter_options(request, *args, **kwargs)
         if kwargs.get('subject_identifier'):
             options.update(
-                {'subject_identifier': kwargs.get('subject_identifier')})
+                {'code': kwargs.get('code')})
         return options
 
     def extra_search_options(self, search_term):

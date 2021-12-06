@@ -1,0 +1,99 @@
+{% extends listboard_base_template %}
+{% load admin_urls %}
+{% load edc_base_extras %}
+{% load pharma_dashboard_extras %}
+{% load edc_dashboard_extras %}
+{% load static %}
+
+{% block extra-css %}
+{{ block.super }}
+	<link type="text/css" rel="stylesheet" href="{% static 'pharma_dashboard/css/report.css' %}">
+	<link href="{% static 'pharma_dashboard/css/bootstrap-table.min.css' %}"rel=stylesheet>
+{% endblock extra-css %}
+
+{% block extra-scripts %}
+{{ block.super }}
+	<script src="{% static 'pharma_dashboard/js/tableExport.min.js' %}"></script>
+	<script src="{% static 'pharma_dashboard/js/bootstrap-table.min.js' %}"></script>
+	<script src="{% static 'pharma_dashboard/js/bootstrap-table-export.min.js' %}"></script>
+	<script src="{% static 'pharma_dashboard/js/bootstrap-table-filter-control.min.js' %}"></script>
+{% endblock %}
+	
+{% block main %}
+
+<!-- start listboard main block-->
+<div class="row">
+	<div id="toolbar">
+		<h3 style="font-weight:300"><img src="{% static 'pharma_dashboard/images/combo-chart.png' %}" width="40"></img> Inventory Report</h3>
+	</div>
+</div>
+<!-- begin table -->
+<div class="table table-responsive">
+<table 	id="sort" class="table table-bordered table-hover small"
+		data-toggle="table"
+		data-toolbar="#toolbar"
+		data-filter-control="true"
+		data-show-columns="true"
+  		data-show-columns-toggle-all="true"
+		data-show-toggle="true"
+		data-show-fullscreen="true"
+		data-show-export="true" 
+		data-pagination="true" >
+<thead>
+
+{% block listboard_table_header %}
+     <!-- begin results header -->
+    <th>#</th>
+    <th data-field='protocol' data-sortable='true' data-filter-control="select">Protocol</th>
+    <th data-field='medication' data-sortable='true' data-filter-control="input">Medication Name</th>
+    <th>Remaining</th>
+    <th>Average monthly consumption</th>
+    <!-- end results header -->
+{% endblock listboard_table_header %}
+
+</thead><tbody>
+
+{% block listboard_table_body %}
+
+    {% for result in results %}
+       <tr>
+       
+         <td>{{ forloop.counter }}</td>
+
+          {% block listboard_table_button_column %}
+
+          {% endblock listboard_table_button_column %}
+
+          {% block listboard_table_columns %}
+           <td nowrap>{{result.object.drug.protocol.number}}, {{result.object.drug.protocol.name}}</td>
+	       <td nowrap>{{result.object.drug.name}}</td>
+	       <td nowrap>
+	    	 <span class="badge badge-pill badge-info">{{result.quantity}}</span>
+	       </td>
+	       <td nowrap>{{result.average_mothly_consumption}} {{result.object.drug.dispense_set.all.0.dispense_type|title}}s</td>
+          {% endblock listboard_table_columns %}
+       </tr>
+    {% endfor %}
+
+{% endblock listboard_table_body %}
+
+</tbody></table>
+
+<!-- begin spacer rows -->
+<table>
+<tr><td>&nbsp;</td></tr>
+<tr><td>&nbsp;</td></tr>
+<tr><td>&nbsp;</td></tr>
+<tr><td>&nbsp;</td></tr>
+<tr><td>&nbsp;</td></tr>
+</table>
+<!-- end spacer rows -->
+
+</div><!-- end table -->
+
+{% paginator_row %}
+
+</div>  <!--end panel -->
+</div> <!--end panel-group -->
+<!-- end listboard main block -->
+{% endblock main %}

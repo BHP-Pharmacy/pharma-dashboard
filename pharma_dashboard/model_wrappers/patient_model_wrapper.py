@@ -3,6 +3,7 @@ from edc_model_wrapper import ModelWrapper
 
 from .dispense_model_wrapper_mixin import DispenseModelWrapperMixin
 
+
 class PatientModelWrapper(DispenseModelWrapperMixin, ModelWrapper):
 
     model = 'pharma_subject.patient'

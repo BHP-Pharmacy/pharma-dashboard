@@ -10,9 +10,10 @@ from edc_navbar import NavbarViewMixin
 
 from ...model_wrappers import DispenseModelWrapper
 
+
 class DispensaryListboardView(NavbarViewMixin, EdcBaseViewMixin,
-                    ListboardFilterViewMixin, SearchFormViewMixin,
-                    ListboardView):
+                              ListboardFilterViewMixin, SearchFormViewMixin,
+                              ListboardView):
 
     listboard_template = 'dispense_listboard_template'
     listboard_url = 'dispense_listboard_url'
@@ -31,6 +32,7 @@ class DispensaryListboardView(NavbarViewMixin, EdcBaseViewMixin,
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+
         context.update(
             dispense_url=self.model_cls().get_absolute_url(),
             subject_identifier=self.kwargs.get('subject_identifier'))
